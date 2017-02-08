@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="jumbotron">
+    <p class="lead text-center">Please pick the category of Meetupevents you would like to see, enter the 5 digit zip code or click the "My location" button for automatic detection</p>
+    <form class="zipInput form-inline text-center" id="zipInput" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <fieldset class="form-group">
+        <label for="cat-select"></label>
+        <select class="form-control" [ngModel]="selectedValue" name="category" id="cat-select" required>
+          <option [ngValue]="result.id" *ngFor="let result of results" [selected]>{{result.name}}</option>
+        </select>
+      </fieldset>
+      <fieldset class="form-group">
+        <label class="sr-only" for="zipcode">Zip Code</label>
+        <input class="zipcode btn-lg form-control"
+               id="zipcode"
+               type="text"
+               value=""
+               pattern="\d*"
+               placeholder="ZIP code"
+               ngModel
+               name="zip"
+               required>
+      </fieldset>
+      <button class="btn btn-info form-control" id="zipButton" type="submit">Go</button>
+      <!--<button class="btn btn-info form-control" id="geoButton">Detect My Location</button>-->
+    </form>
+  </div>
+</div>
