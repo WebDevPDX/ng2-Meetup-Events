@@ -7,18 +7,12 @@ import { CategoriesService } from "../inputs/categories.service";
 })
 export class OutputComponent implements OnInit {
 
+  eventList: any[];
+
   constructor(private categoriesService: CategoriesService) { }
 
-  getEvents() {
-    this.categoriesService.getEvents().subscribe(
-      (data: any) => {
-        console.log(data.results)
-      }
-    )
-  }
-
   ngOnInit() {
-    this.getEvents();
+    this.categoriesService.resultsUpdate
   }
 
 }

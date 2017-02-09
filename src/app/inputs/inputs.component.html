@@ -12,9 +12,9 @@
         <label class="sr-only" for="zipcode">Zip Code</label>
         <input class="zipcode btn-lg form-control"
                id="zipcode"
-               type="text"
+               type="number"
                value=""
-               pattern="\d*"
+               pattern="^(\d{5})"
                placeholder="ZIP code"
                ngModel
                name="zip"

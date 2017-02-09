@@ -26,9 +26,8 @@ export class InputsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const value = form.value;
-    // console.log(value)
-    this.categoriesService.input = form.value
+    this.categoriesService.link = `http://api.meetup.com/2/open_events/?zip=${form.value.zip}&time=,1w&and_text=False&offset=0&format=json&limited_events=False&photo-host=public&page=100&radius=25&category=${form.value.category}&desc=False&status=upcoming&sign=true&key=54347e276174919776f82826417369`
+    this.categoriesService.getEvents()
   }
 
   ngOnInit() {
