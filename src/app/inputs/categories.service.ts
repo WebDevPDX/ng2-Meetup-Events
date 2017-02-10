@@ -8,8 +8,8 @@ export class CategoriesService {
 
   updatedResults: EventEmitter<any[]> = new EventEmitter();
 
-  @Input() link: string;
-  @Input() eventList: any[];
+  link: string;
+  eventList: any[];
 
   constructor(private http: Http) {}
 
