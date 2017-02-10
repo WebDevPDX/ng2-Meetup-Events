@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { NgForm } from "@angular/forms";
 
 import { CategoriesService } from "./categories.service";
@@ -27,7 +27,13 @@ export class InputsComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.categoriesService.link = `http://api.meetup.com/2/open_events/?zip=${form.value.zip}&time=,1w&and_text=False&offset=0&format=json&limited_events=False&photo-host=public&page=100&radius=25&category=${form.value.category}&desc=False&status=upcoming&sign=true&key=54347e276174919776f82826417369`
-    this.categoriesService.getEvents()
+    this.categoriesService.getEvents().subscribe(
+      (data: any) => {
+        this.categoriesService.eventList = data.results;
+        console.log(this.categoriesService.eventList);
+        this.categoriesService.updatedResults.emit(data.results)
+      }
+    )
   }
 
   ngOnInit() {

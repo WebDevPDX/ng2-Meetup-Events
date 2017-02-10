@@ -1,0 +1,7 @@
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <app-output-detail *ngFor="let result of searchResult; let i = index" [event]="result" [eventId]="i"></app-output-detail>
+    </ul>
+  </div>
+</div>

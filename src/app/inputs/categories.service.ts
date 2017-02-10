@@ -1,16 +1,15 @@
 import {Injectable, Input, EventEmitter} from '@angular/core';
-import { Http, Response } from "@angular/http";
+import {Http, Response, URLSearchParams} from "@angular/http";
 import 'rxjs/Rx';
-import { EventObj } from './event'
 
 @Injectable()
 
 export class CategoriesService {
 
-  resultsUpdate = new EventEmitter();
+  updatedResults: EventEmitter<any[]> = new EventEmitter();
 
   @Input() link: string;
-  eventResult: any;
+  @Input() eventList: any[];
 
   constructor(private http: Http) {}
 
@@ -19,25 +18,8 @@ export class CategoriesService {
       .map((response: Response) => response.json())
   }
 
-  // getEvents() {
-  //   return this.http.get(this.link)
-  //     .map((response: Response) => response.json())
-  //     .subscribe((data: any) => {
-  //         this.eventResult = data.result;
-  //         console.log(this.eventResult);
-  //         this.resultsUpdate.emit();
-  //       }
-  //     )
-  // }
-
   getEvents() {
     return this.http.get(this.link)
       .map((response: Response) => response.json())
-      .subscribe((data: any) => {
-          this.eventResult = data.result;
-          this.resultsUpdate.emit();
-        }
-      );
   }
-
 }

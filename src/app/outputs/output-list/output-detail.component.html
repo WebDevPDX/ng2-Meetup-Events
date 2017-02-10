@@ -1,0 +1,31 @@
+<div class="panel panel-default event">
+  <div class="panel-heading" role="tab">
+    <a>
+      <h3 class="panel-title title">
+        {{event.name}}
+        <small>Click to learn more</small>
+      </h3>
+    </a>
+  </div>
+  <div class="panel-collapse collapse in">
+    <div class="panel-body" [innerHTML]="event.description"></div>
+  </div>
+  <div class="panel-body" *ngIf="event.time">{{event.time | date:'yMdjm'}}</div>
+  <div class="panel-body" *ngIf="event.venue && event.venue.name && event.venue.address_1">{{event.venue.name }} @ {{event.venue.address_1}}</div>
+  <div class="panel-body" *ngIf="event.venue && event.venue.name && !event.venue.address_1">{{event.venue.name }} @ unknown</div>
+  <div class="panel-body" *ngIf="event.venue && !event.venue.name && event.venue.address_1"> unknown @ {{event.venue.address_1}}</div>
+  <div class="panel-body" *ngIf="!event.venue">unknown @ unknown</div>
+  <div class="panel-body">
+    <table>
+      <tbody>
+      <tr>
+        <td>Yes: {{event.yes_rsvp_count || 0}}</td>
+        <td>No: {{event.no_rsvp_count || 0}}</td>
+        <td>Maybe: {{event.maybe_rsvp_count || 0}}</td>
+        <td>Waitlist: {{event.waitlist_count || 0}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">{{event.event_url}}</div>
+</div>

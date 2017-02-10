@@ -6,20 +6,24 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { InputsComponent } from './inputs/inputs.component';
 import { CategoriesService } from "./inputs/categories.service";
-import { OutputComponent } from './output/output.component';
+import { OutputsComponent } from './outputs/outputs.component';
+import { OutputListComponent } from './outputs/output-list/output-list.component';
+import { OutputDetailComponent } from './outputs/output-list/output-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputsComponent,
-    OutputComponent,
+    OutputsComponent,
+    OutputListComponent,
+    OutputDetailComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [ CategoriesService ],
+  providers: [ CategoriesService, ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
